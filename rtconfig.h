@@ -16,6 +16,9 @@
 #define RT_USING_IDLE_HOOK
 #define RT_IDLE_HOOK_LIST_SIZE 4
 #define IDLE_THREAD_STACK_SIZE 256
+#define RT_USING_TIMER_SOFT
+#define RT_TIMER_THREAD_PRIO 4
+#define RT_TIMER_THREAD_STACK_SIZE 512
 #define RT_DEBUG
 
 /* Inter-Thread communication */
@@ -38,8 +41,9 @@
 #define RT_USING_CONSOLE
 #define RT_CONSOLEBUF_SIZE 128
 #define RT_CONSOLE_DEVICE_NAME "uart2"
-#define RT_VER_NUM 0x40001
+#define RT_VER_NUM 0x40003
 #define ARCH_ARM
+#define RT_USING_CPU_FFS
 #define ARCH_ARM_CORTEX_M
 #define ARCH_ARM_CORTEX_M4
 
@@ -66,11 +70,16 @@
 #define FINSH_CMD_SIZE 80
 #define FINSH_USING_MSH
 #define FINSH_USING_MSH_DEFAULT
-#define FINSH_USING_MSH_ONLY
 #define FINSH_ARG_MAX 10
 
 /* Device virtual file system */
 
+#define RT_USING_DFS
+#define DFS_USING_WORKDIR
+#define DFS_FILESYSTEMS_MAX 2
+#define DFS_FILESYSTEM_TYPES_MAX 2
+#define DFS_FD_MAX 16
+#define RT_USING_DFS_DEVFS
 
 /* Device Drivers */
 
@@ -80,25 +89,25 @@
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
 #define RT_USING_PIN
-
-/* Using WiFi */
-
+#define RT_USING_SPI
 
 /* Using USB */
 
 
 /* POSIX layer and C standard library */
 
+#define RT_USING_LIBC
+#define RT_USING_POSIX
 
 /* Network */
 
 /* Socket abstraction layer */
 
 
+/* Network interface device */
+
+
 /* light weight TCP/IP stack */
-
-
-/* Modbus master and slave stack */
 
 
 /* AT commands */
@@ -108,9 +117,6 @@
 
 
 /* Utilities */
-
-
-/* ARM CMSIS */
 
 
 /* RT-Thread online packages */
@@ -146,22 +152,24 @@
 
 /* peripheral libraries and drivers */
 
-/* sensors drivers */
+#define PKG_USING_RC522
+#define MFRC522_SPI_BUS_NAME "spi1"
+#define MFRC522_SPI_DEVICE_NAME "spi10"
 
+/* Notice: PH3 --> 115 */
+
+#define MFRC522_SS_PIN 22
+
+/* Notice: PH8 --> 120 */
+
+#define MFRC522_RST_PIN 39
+#define PKG_USING_RC522_SAMPLE
+#define PKG_USING_RC522_LATEST_VERSION
 
 /* miscellaneous packages */
 
 
 /* samples: kernel and components samples */
-
-
-/* Privated Packages of RealThread */
-
-
-/* Network Utilities */
-
-
-/* rtpkgs online packages */
 
 #define SOC_FAMILY_STM32
 #define SOC_SERIES_STM32F4
@@ -177,6 +185,8 @@
 #define BSP_USING_GPIO
 #define BSP_USING_UART
 #define BSP_USING_UART2
+#define BSP_USING_SPI
+#define BSP_USING_SPI1
 
 /* Board extended module Drivers */
 
